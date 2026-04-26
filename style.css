@@ -1,0 +1,213 @@
+/* =========================================
+   1. ROOT VARIABLES & GLOBAL STYLES
+   ========================================= */
+:root {
+    --primary-blue: #0d6efd;
+    --primary-yellow: #ffc107;
+    --dark-accent: #212529;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+body { 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+    scroll-behavior: smooth; 
+    overflow-x: hidden;
+}
+
+/* =========================================
+   2. NAVIGATION STYLES
+   ========================================= */
+.navbar-brand img {
+    filter: brightness(0) invert(1); 
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+}
+
+.navbar-toggler, 
+.navbar-toggler:focus, 
+.navbar-toggler:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================================
+   3. HERO SECTION (Main Header)
+   ========================================= */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(20,20,20,0.8) 100%), 
+                url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1350&q=80');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    overflow: hidden;
+}
+
+/* Floating Shapes Background */
+.shape-1, .shape-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(13, 110, 253, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: float 10s infinite alternate;
+}
+.shape-1 { top: -100px; left: -100px; }
+.shape-2 { bottom: -100px; right: -100px; animation-delay: 2s; }
+
+@keyframes float {
+    from { transform: translate(0, 0); }
+    to { transform: translate(50px, 50px); }
+}
+
+/* Hero Typography & Buttons */
+.tracking-widest { letter-spacing: 4px; }
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(13, 110, 253, 0.6) !important;
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+.glass-btn {
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    transition: 0.3s;
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* =========================================
+   4. SERVICES & CARDS
+   ========================================= */
+.service-card {
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(13, 110, 253, 0.15);
+    border-bottom: 4px solid var(--primary-blue);
+}
+
+.icon-box {
+    width: 70px;
+    height: 70px;
+    background: rgba(13, 110, 253, 0.1);
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* =========================================
+   5. ACHIEVEMENTS & STATS
+   ========================================= */
+.stat-card {
+    background: var(--dark-accent);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.stat-card:hover {
+    background: #2c3034;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   6. FORMS & CONTACT
+   ========================================= */
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+/* =========================================
+   7. ANIMATIONS
+   ========================================= */
+.fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+.fade-in-up-delay { animation: fadeInUp 0.8s ease 0.3s forwards; opacity: 0; }
+.fade-in-up-delay-2 { animation: fadeInUp 0.8s ease 0.6s forwards; opacity: 0; }
+.scale-in { animation: scaleIn 1s ease forwards; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* =========================================
+   8. RESPONSIVE QUERIES
+   ========================================= */
+
+/* Desktop & Tablets */
+@media (max-width: 991.98px) {
+    .navbar-nav .nav-item {
+        width: 100%;
+        padding: 8px 0;
+    }
+    .navbar-collapse {
+        margin-top: 15px;
+        padding-bottom: 20px;
+    }
+}
+
+/* Small Tablets & Large Phones */
+@media (max-width: 768px) {
+    .hero-section { 
+        min-height: 80vh; 
+        clip-path: none;
+        padding: 100px 0;
+    }
+    .display-2 { font-size: 2.8rem; }
+}
+
+/* Phones */
+@media (max-width: 575.98px) {
+    .hero-section h1.display-3 {
+        font-size: 2.2rem;
+        margin-bottom: 20px !important;
+    }
+    .hero-section .btn-lg {
+        padding: 12px 24px !important;
+        font-size: 0.95rem !important;
+        width: 100%; /* Mobile par full width buttons zyada ache lagte hain */
+    }
+    .hero-section .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
